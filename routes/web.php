@@ -13,17 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "Olá seja bem vindo ao treinamento! ";
-});
+
+// idicado para versão do laravel 8.x
+// versão 1 de roteamento
+
+Route::get('/sobreNos',[\App\Http\Controllers\SobreNosController::class,'sobreNos']);
+Route::get('/contato',[\App\Http\Controllers\ContatoController::class,'contato']);
+Route::get('/',[\App\Http\Controllers\PrincipalController::class,'principal']);
 
 
-Route::get('/sobre-nos', function () {
-    return "Sobre-Nós ";
-});
+/*/versão 2 de roteamento
+Route::get('/', 'PrincipalController@principal');
+
+Route::get('/contato', 'ContatoController@contato');
+
+Route::get('/sobreNos', 'SobreNosController@sobreNos');
+*/
 
 
-Route::get('/contato', function () {
-    return "Nosso contato! ";
-});
+/* versão 3 de roteamento
+// esta é a versão apropriada ao laravel 9.13
+Route::get('/', function () {});
 
+Route::get('/contato', function () {});
+
+Route::get('/sobreNos', function () {});
+*/
